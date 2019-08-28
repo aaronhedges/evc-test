@@ -13,10 +13,10 @@
         >
           <div class="row" v-if="errors.length">
             <p>
-                <b>Please correct the following error(s):</b>
-                <ul>
-                    <li v-for="error in errors">{{ error }}</li>
-                </ul>
+              <b>Please correct the following error(s):</b>
+              <ul>
+                <li v-for="error in errors">{{ error }}</li>
+              </ul>
             </p>
           </div>
           <div class="row">
