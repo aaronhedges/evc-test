@@ -74,6 +74,56 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'Register',
+  data() {
+    return {
+      errors: [],
+      firstName: null,
+      lastName: null,
+      email: null,
+      password: null,
+      passwordConfirm: null,
+    };
+  },
+  methods: {
+    checkForm: function (e) {
+      if (
+        (this.firstName && this.lastName && this.email && this.password) && (this.password === this.passwordConfirm)) {
+        return true;
+      }
+
+      this.errors = [];
+
+      if (!this.firstName) {
+        this.errors.push('First name required.');
+      }
+
+      if (!this.lastName) {
+        this.errors.push('Last name required.');
+      }
+
+      if (!this.email) {
+        this.errors.push('Email required.');
+      }
+
+      if (!this.password) {
+        this.errors.push('Password required.');
+      }
+
+      if (this.password !== this.passwordConfirm) {
+        this.errors.push('Password and confirm password do not match.');
+      }
+
+      e.preventDefault();
+
+      return false;
+    },
+  },
+};
+</script>
+
 <style scoped>
 .formHolder {
   display: flex;
@@ -81,9 +131,10 @@
   justify-content: center;
 }
 .registrationForm {
-    text-align: left;
+
 }
 .row {
     margin: 10px;
+    text-align: left;
 }
 </style>
