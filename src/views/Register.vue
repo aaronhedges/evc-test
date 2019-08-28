@@ -8,8 +8,6 @@
         <form
           id="app"
           @submit="checkForm"
-          action="registerSubmit"
-          method="post"
         >
           <div class="row" v-if="errors.length">
             <p>
@@ -75,6 +73,8 @@
 </template>
 
 <script>
+// import { REGISTER } from "@/store/actions.type";
+
 export default {
   name: 'Register',
   data() {
@@ -91,6 +91,9 @@ export default {
     checkForm: function (e) {
       if (
         (this.firstName && this.lastName && this.email && this.password) && (this.password === this.passwordConfirm)) {
+          this.$store
+            .dispatch(REGISTER, { firstName, lastName, email, password })
+            .then(() => this.$router.push({ name: "home" }));
         return true;
       }
 
