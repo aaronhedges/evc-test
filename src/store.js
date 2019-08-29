@@ -9,6 +9,7 @@ export default new Vuex.Store({
     status: '',
     token: localStorage.getItem('token') || '',
     user: {},
+    listings: [],
   },
   mutations: {
 
@@ -34,5 +35,9 @@ export default new Vuex.Store({
         })
       })
     }, */
+    register({comit}, user){
+      console.log('register started')
+      localStorage.loggedInUser = user.email;
+    }
   },
 });
