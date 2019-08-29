@@ -73,7 +73,6 @@
 </template>
 
 <script>
-// import { REGISTER } from "@/store/actions.type";
 
 export default {
   name: 'Register',
@@ -92,8 +91,9 @@ export default {
       if (
         (this.firstName && this.lastName && this.email && this.password) && (this.password === this.passwordConfirm)) {
           this.$store
-            .dispatch(REGISTER, { firstName, lastName, email, password })
-            .then(() => this.$router.push({ name: "home" }));
+            .dispatch(register, data)
+            .then(() => this.$router.push('/#'))
+            .catch(err => console.log(err));
         return true;
       }
 
@@ -137,7 +137,10 @@ export default {
 
 }
 .row {
-    margin: 10px;
-    text-align: left;
+  margin: 10px;
+  text-align: left;
+  @media screen and (max-width: 500px) {
+    margin: 10px 5px;
+  }
 }
 </style>
