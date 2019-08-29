@@ -1,13 +1,13 @@
 import Vue from 'vue';
+import Axios from 'axios';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import Axios from 'axios'
 
 Vue.prototype.$http = Axios;
-const token = localStorage.getItem('token')
+const token = localStorage.getItem('token');
 if (token) {
-  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+  Vue.prototype.$http.defaults.headers.common.Authorization = token;
 }
 
 Vue.config.productionTip = false;
@@ -16,4 +16,17 @@ new Vue({
   router,
   store,
   render: h => h(App),
+  data: {
+    loggedInUser: '',
+  },
+  mounted() {
+    if (localStorage.name) {
+      this.name = localStorage.name;
+    }
+  },
+  /* watch: {
+    name(newName) {
+      localStorage.name = newName;
+    }
+  } */
 }).$mount('#app');
